@@ -1,0 +1,126 @@
+# =========================
+# General C/C++
+# I was lazy so I copy-pasted it
+# =========================
+
+# Compiled object files
+*.o
+*.obj
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Static libraries
+*.a
+*.lib
+
+# Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug / symbol files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.temp
+*.swp
+*~
+
+# =========================
+# Build directories
+# =========================
+build/
+bin/
+obj/
+out/
+Debug/
+Release/
+x64/
+x86/
+
+# =========================
+# CMake
+# =========================
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# =========================
+# Autotools
+# =========================
+aclocal.m4
+autom4te.cache/
+configure
+config.h
+config.log
+config.status
+libtool
+m4/
+
+# =========================
+# MSVC / Visual Studio
+# =========================
+
+# Visual Studio directory
+.vs/
+
+# Solution & project user files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+*.ilk
+*.tlog/
+*.lastbuildstate
+*.unsuccessfulbuild
+
+# IntelliSense / browsing
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+
+# MSVC incremental/linker artifacts
+*.ipdb
+*.iobj
+
+# NuGet
+packages/
+
+# =========================
+# IDEs
+# =========================
+
+## VS Code
+.vscode/
+
+## JetBrains (CLion, etc.)
+.idea/
+
+# =========================
+# OS files
+# =========================
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
