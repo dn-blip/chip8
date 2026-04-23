@@ -7,11 +7,29 @@
 // 0x200 - 0xFFF contains the actual adresses
 // 0x050 - 0x0A0 is where we should put the characters
 
+// copied from https://austinmorlan.com/posts/chip8_emulator
+
+const uint8_t fontset[80] = {
+	0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
+	0x20, 0x60, 0x20, 0x20, 0x70, // 1
+	0xF0, 0x10, 0xF0, 0x80, 0xF0, // 2
+	0xF0, 0x10, 0xF0, 0x10, 0xF0, // 3
+	0x90, 0x90, 0xF0, 0x10, 0x10, // 4
+	0xF0, 0x80, 0xF0, 0x10, 0xF0, // 5
+	0xF0, 0x80, 0xF0, 0x90, 0xF0, // 6
+	0xF0, 0x10, 0x20, 0x40, 0x40, // 7
+	0xF0, 0x90, 0xF0, 0x90, 0xF0, // 8
+	0xF0, 0x90, 0xF0, 0x10, 0xF0, // 9
+	0xF0, 0x90, 0xF0, 0x90, 0x90, // A
+	0xE0, 0x90, 0xE0, 0x90, 0xE0, // B
+	0xF0, 0x80, 0x80, 0x80, 0xF0, // C
+	0xE0, 0x90, 0x90, 0x90, 0xE0, // D
+	0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
+	0xF0, 0x80, 0xF0, 0x80, 0x80  // F
+};
+
 /// TODO: RNG, better solutions that static arrays in headers.
 int chip8_load_file(const char *filename, struct chip8_t *chip8) {
-        // error values and other constants
-        int seek_result;
-        int read_result;
         const unsigned int start_address = 0x200;
         const unsigned int fontset_address = 0x50;
         if (chip8 == NULL) return -1;
@@ -20,18 +38,15 @@ int chip8_load_file(const char *filename, struct chip8_t *chip8) {
         if (fp == NULL) return -1;
 
         // file size
-        seek_result = fseek(fp, SEEK_END, 0L);
-        if (seek_result != 0) return -1;
+        fseek(fp, SEEK_END, 0L);
 
         long size = ftell(fp);
 
         char *buffer = (char *) malloc(size);
 
-        seek_result = fseek(fp, SEEK_SET, 0L);
-        if (seek_result != 0) return -1;
+        fseek(fp, SEEK_SET, 0L);
 
-        read_result = fread(buffer, sizeof(char), size, fp);
-        if (read_result != size) return -1;
+        fread(buffer, sizeof(char), size, fp);
 
         fclose(fp);
 
